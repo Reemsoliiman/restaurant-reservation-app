@@ -47,13 +47,36 @@ class RestaurantsListScreen extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(16.0), // Increased padding for better spacing
                 child: TextField(
-                  decoration:
-                      const InputDecoration(labelText: 'Search by name'),
                   onChanged: (v) => context
                       .read<RestaurantsCubit>()
                       .updateSearchQuery(v.trim()),
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    hintStyle: TextStyle(color: Colors.grey.shade500),
+                    prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
+                    filled: true,
+                    fillColor: Colors.white,
+                    contentPadding: const EdgeInsets.all(0), // Aligns text vertically with icon
+                    // The border style when the user is NOT typing
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                      borderSide: BorderSide(color: Colors.grey.shade300, width: 1),
+                    ),
+                    // The border style when the user clicks to type
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                      borderSide: BorderSide(
+                          color: Theme.of(context).primaryColor, 
+                          width: 1.5
+                      ),
+                    ),
+                    // Fallback border style
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12.0),
+                    ),
+                  ),
                 ),
               ),
               if (state is RestaurantsLoading)

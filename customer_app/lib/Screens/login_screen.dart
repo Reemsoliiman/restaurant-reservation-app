@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
         return Scaffold(
           appBar: AppBar(
-            title: const Text("Login"),
+            // title: const Text("Login"),
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -234,7 +234,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
                           backgroundColor:
-                              const Color.fromRGBO(29, 159, 240, 1),
+                              const Color.fromARGB(255, 255, 115, 0),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(48)),
                         ),
