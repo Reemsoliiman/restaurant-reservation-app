@@ -68,8 +68,10 @@ class _LoginScreenState extends State<LoginScreen> {
         final isLoading = state is AuthLoading;
 
         return Scaffold(
+          backgroundColor: Colors.white,
           appBar: AppBar(
-            // title: const Text("Login"),
+            backgroundColor: Colors.white,
+            elevation: 0,
           ),
           body: SingleChildScrollView(
             child: Padding(
@@ -110,13 +112,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           validator: (inputValue) {
                             String pattern =
                                 r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";
-                            //r"\s";
                             RegExp regex = RegExp(pattern);
                             if (inputValue == null || inputValue.isEmpty) {
                               return "This field is required";
                             }
                             if (!regex.hasMatch(inputValue)) {
-                              //return AppLocalizations.of(context)!.fieldEmailErrMessage;
                               return "Email address is not valid";
                             }
                             return null;
@@ -128,6 +128,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               errorStyle: const TextStyle(height: 0.8),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
@@ -138,8 +140,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                                 borderSide: const BorderSide(
-                                    color: Color.fromRGBO(54, 63, 99, 1),
-                                    width: 1),
+                                    color: Color.fromARGB(200, 255, 115, 0),
+                                    width: 2),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
@@ -189,6 +191,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           focusNode: _emailFocusNode,
                           decoration: InputDecoration(
+                              filled: true,
+                              fillColor: Colors.white,
                               suffixIcon: IconButton(
                                 icon: isVisible
                                     ? const Icon(Icons.visibility_off, size: 25)
@@ -209,8 +213,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
                                 borderSide: const BorderSide(
-                                    color: Color.fromRGBO(54, 63, 99, 1),
-                                    width: 1),
+                                    color: Color.fromARGB(200, 255, 115, 0),
+                                    width: 2),
                               ),
                               errorBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(24),
