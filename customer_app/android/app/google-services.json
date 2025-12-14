@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "478595585360",
-    "project_id": "restaurant-reservation-s-8657b",
-    "storage_bucket": "restaurant-reservation-s-8657b.firebasestorage.app"
+    "project_number": "498930849752",
+    "project_id": "restaurant-reservation-s-97263",
+    "storage_bucket": "restaurant-reservation-s-97263.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:478595585360:android:cb2af98064472891d3c855",
+        "mobilesdk_app_id": "1:498930849752:android:eb2e4a54f0064ff7e944ad",
         "android_client_info": {
           "package_name": "com.example.customer_app"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBv_Hu0CJnC7AkQhopk0hToKxEjVKy69Zc"
+          "current_key": "AIzaSyCuK0_WwpUAYz64Als28Ph8dKzGkSV0eKI"
         }
       ],
       "services": {
@@ -26,7 +26,7 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:478595585360:android:f5d0ce6e9e380666d3c855",
+        "mobilesdk_app_id": "1:498930849752:android:3d8c1962959fbd29e944ad",
         "android_client_info": {
           "package_name": "com.example.vendor_app"
         }
@@ -34,7 +34,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBv_Hu0CJnC7AkQhopk0hToKxEjVKy69Zc"
+          "current_key": "AIzaSyCuK0_WwpUAYz64Als28Ph8dKzGkSV0eKI"
         }
       ],
       "services": {

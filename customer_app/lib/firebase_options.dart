@@ -41,47 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBv_Hu0CJnC7AkQhopk0hToKxEjVKy69Zc',
-    appId: '1:478595585360:android:cb2af98064472891d3c855',
-    messagingSenderId: '478595585360',
-    projectId: 'restaurant-reservation-s-8657b',
-    storageBucket: 'restaurant-reservation-s-8657b.firebasestorage.app',
+    apiKey: 'AIzaSyCuK0_WwpUAYz64Als28Ph8dKzGkSV0eKI',
+    appId: '1:498930849752:android:eb2e4a54f0064ff7e944ad',
+    messagingSenderId: '498930849752',
+    projectId: 'restaurant-reservation-s-97263',
+    storageBucket: 'restaurant-reservation-s-97263.firebasestorage.app',
   );
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDfncKAUE2C5nEe-KhCQdjzpqjb62y2HHM',
-    appId: '1:478595585360:web:c5b57f2a75d4f50dd3c855',
-    messagingSenderId: '478595585360',
-    projectId: 'restaurant-reservation-s-8657b',
-    authDomain: 'restaurant-reservation-s-8657b.firebaseapp.com',
-    storageBucket: 'restaurant-reservation-s-8657b.firebasestorage.app',
+    apiKey: 'AIzaSyBtPBEC5W3SbTAyL4krrGWPjKt8hCeF6CI',
+    appId: '1:498930849752:web:3be8bdd1f2374822e944ad',
+    messagingSenderId: '498930849752',
+    projectId: 'restaurant-reservation-s-97263',
+    authDomain: 'restaurant-reservation-s-97263.firebaseapp.com',
+    storageBucket: 'restaurant-reservation-s-97263.firebasestorage.app',
+    measurementId: 'G-P2T0BSLKD9',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyCJlVmy6b_rWkYe_gBoVltiRlC9CakgRuY',
-    appId: '1:478595585360:ios:b7c03b57129cdc2ed3c855',
-    messagingSenderId: '478595585360',
-    projectId: 'restaurant-reservation-s-8657b',
-    storageBucket: 'restaurant-reservation-s-8657b.firebasestorage.app',
+    apiKey: 'AIzaSyDn1-DzLoheZ4hKPjixoF7lzqqyHDIE108',
+    appId: '1:498930849752:ios:64dde4a47950958fe944ad',
+    messagingSenderId: '498930849752',
+    projectId: 'restaurant-reservation-s-97263',
+    storageBucket: 'restaurant-reservation-s-97263.firebasestorage.app',
     iosBundleId: 'com.example.customerApp',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyCJlVmy6b_rWkYe_gBoVltiRlC9CakgRuY',
-    appId: '1:478595585360:ios:b7c03b57129cdc2ed3c855',
-    messagingSenderId: '478595585360',
-    projectId: 'restaurant-reservation-s-8657b',
-    storageBucket: 'restaurant-reservation-s-8657b.firebasestorage.app',
+    apiKey: 'AIzaSyDn1-DzLoheZ4hKPjixoF7lzqqyHDIE108',
+    appId: '1:498930849752:ios:64dde4a47950958fe944ad',
+    messagingSenderId: '498930849752',
+    projectId: 'restaurant-reservation-s-97263',
+    storageBucket: 'restaurant-reservation-s-97263.firebasestorage.app',
     iosBundleId: 'com.example.customerApp',
   );
 
   static const FirebaseOptions windows = FirebaseOptions(
-    apiKey: 'AIzaSyDfncKAUE2C5nEe-KhCQdjzpqjb62y2HHM',
-    appId: '1:478595585360:web:2105547a083b9b1dd3c855',
-    messagingSenderId: '478595585360',
-    projectId: 'restaurant-reservation-s-8657b',
-    authDomain: 'restaurant-reservation-s-8657b.firebaseapp.com',
-    storageBucket: 'restaurant-reservation-s-8657b.firebasestorage.app',
+    apiKey: 'AIzaSyBtPBEC5W3SbTAyL4krrGWPjKt8hCeF6CI',
+    appId: '1:498930849752:web:d4c594e19063e546e944ad',
+    messagingSenderId: '498930849752',
+    projectId: 'restaurant-reservation-s-97263',
+    authDomain: 'restaurant-reservation-s-97263.firebaseapp.com',
+    storageBucket: 'restaurant-reservation-s-97263.firebasestorage.app',
+    measurementId: 'G-4HW7QRD8XW',
   );
 
 }
