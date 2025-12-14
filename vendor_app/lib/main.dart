@@ -41,7 +41,38 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Vendor App',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(
+          primarySwatch: Colors.orange,
+          primaryColor: const Color(0xFFFFA55C),
+          scaffoldBackgroundColor: Colors.white,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Color(0xFFFFA55C),
+            foregroundColor: Colors.white,
+            elevation: 0,
+          ),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFFFA55C),
+              foregroundColor: Colors.white,
+            ),
+          ),
+          floatingActionButtonTheme: const FloatingActionButtonThemeData(
+            backgroundColor: Color(0xFFFFA55C),
+            foregroundColor: Colors.white,
+          ),
+          chipTheme: ChipThemeData(
+            backgroundColor: const Color(0xFFFFA55C).withOpacity(0.1),
+            selectedColor: const Color(0xFFFFA55C),
+            labelStyle: const TextStyle(color: Colors.black87),
+          ),
+          iconTheme: const IconThemeData(
+            color: Color(0xFFFFA55C),
+          ),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xFFFFA55C),
+            primary: const Color(0xFFFFA55C),
+          ),
+        ),
         home: const VendorHomeScreen(),
         routes: {
           '/add-restaurant': (context) => const AddRestaurantScreen(),
