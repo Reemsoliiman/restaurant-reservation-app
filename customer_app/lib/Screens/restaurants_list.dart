@@ -257,36 +257,32 @@ class RestaurantsListScreen extends StatelessWidget {
                                 ),
                               ),
                               // Restaurant Name and Category
-                              Expanded(
-                                flex: 1,
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        r.name,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: const TextStyle(
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 14,
-                                        ),
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      r.name,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 13,
                                       ),
-                                      const SizedBox(height: 2),
-                                      Text(
-                                        r.category,
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.grey.shade600,
-                                        ),
+                                    ),
+                                    const SizedBox(height: 2),
+                                    Text(
+                                      r.category,
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      style: TextStyle(
+                                        fontSize: 11,
+                                        color: Colors.grey.shade600,
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ],
@@ -333,7 +329,6 @@ class RestaurantsListScreen extends StatelessWidget {
       }
     }
 
-    // It's a network URL
     return Image.network(
       imageUrl,
       fit: BoxFit.cover,

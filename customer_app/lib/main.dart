@@ -15,14 +15,11 @@ import './services/firestore_service.dart';
 
 // Define your app colors here
 class AppColors {
-  static const Color primaryDark = Color.fromRGBO(54, 63, 99, 1);
-  static const Color accentOrange = Color.fromARGB(255, 255, 115, 0);
-  static const Color accentOrangeFaded = Color.fromARGB(200, 255, 115, 0);
-  static const Color accentOrangeLight = Color.fromARGB(150, 255, 115, 0);
+  static const Color primaryOrange = Color(0xFFFFA55C);
   static const Color white = Colors.white;
   static const Color textLight = Color.fromRGBO(249, 251, 253, 1);
   static const Color errorRed = Colors.red;
-  static const Color greyBorder = Color.fromRGBO(54, 63, 99, 1);
+  static const Color greyBorder = Color(0xFFE0E0E0);
 }
 
 void main() async {
@@ -54,7 +51,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
-          primaryColor: AppColors.accentOrange,
+          primaryColor: AppColors.primaryOrange,
           scaffoldBackgroundColor: AppColors.white,
           appBarTheme: const AppBarTheme(
             backgroundColor: AppColors.white,
@@ -68,8 +65,8 @@ class MyApp extends StatelessWidget {
           ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              backgroundColor: AppColors.accentOrange,
-              foregroundColor: AppColors.textLight,
+              backgroundColor: AppColors.primaryOrange,
+              foregroundColor: Colors.white,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(48),
               ),
@@ -77,7 +74,7 @@ class MyApp extends StatelessWidget {
           ),
           textButtonTheme: TextButtonThemeData(
             style: TextButton.styleFrom(
-              foregroundColor: AppColors.accentOrange,
+              foregroundColor: AppColors.primaryOrange,
             ),
           ),
           inputDecorationTheme: InputDecorationTheme(
@@ -94,7 +91,7 @@ class MyApp extends StatelessWidget {
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(24),
               borderSide: const BorderSide(
-                color: AppColors.accentOrangeFaded,
+                color: AppColors.primaryOrange,
                 width: 2,
               ),
             ),
@@ -113,11 +110,15 @@ class MyApp extends StatelessWidget {
               ),
             ),
           ),
-          chipTheme: const ChipThemeData(
-            backgroundColor: Colors.transparent,
-            selectedColor: AppColors.accentOrangeLight,
-            labelStyle: TextStyle(color: Colors.white),
-            secondaryLabelStyle: TextStyle(color: Colors.white),
+          chipTheme: ChipThemeData(
+            backgroundColor: Colors.grey[200],
+            selectedColor: AppColors.primaryOrange,
+            labelStyle: const TextStyle(color: Colors.black87),
+            secondarySelectedColor: AppColors.primaryOrange,
+          ),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: AppColors.primaryOrange,
+            primary: AppColors.primaryOrange,
           ),
         ),
         home: StreamBuilder(
