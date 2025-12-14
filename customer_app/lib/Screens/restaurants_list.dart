@@ -47,7 +47,7 @@ class RestaurantsListScreen extends StatelessWidget {
           return Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(16.0), // Increased padding for better spacing
+                padding: const EdgeInsets.all(16.0),
                 child: TextField(
                   onChanged: (v) => context
                       .read<RestaurantsCubit>()
@@ -58,21 +58,17 @@ class RestaurantsListScreen extends StatelessWidget {
                     prefixIcon: Icon(Icons.search, color: Colors.grey.shade400),
                     filled: true,
                     fillColor: Colors.white,
-                    contentPadding: const EdgeInsets.all(0), // Aligns text vertically with icon
-                    // The border style when the user is NOT typing
+                    contentPadding: const EdgeInsets.all(0),
                     enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12.0), // Rounded corners
+                      borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide(color: Colors.grey.shade300, width: 1),
                     ),
-                    // The border style when the user clicks to type
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                       borderSide: BorderSide(
-                          color: Theme.of(context).primaryColor, 
-                          width: 1.5
-                      ),
+                          color: Theme.of(context).primaryColor,
+                          width: 2),
                     ),
-                    // Fallback border style
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12.0),
                     ),
@@ -156,12 +152,16 @@ class RestaurantsListScreen extends StatelessWidget {
               height: 48,
               child: ListView(
                 scrollDirection: Axis.horizontal,
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4.0),
                     child: ChoiceChip(
                       label: const Text('All'),
                       selected: state.selectedCategory == null,
+                      backgroundColor: Colors.white,
+                      side: BorderSide(color: Colors.grey.shade300),
+                      labelStyle: const TextStyle(color: Colors.black),
                       onSelected: (_) => context
                           .read<RestaurantsCubit>()
                           .updateCategoryFilter(null),
@@ -172,6 +172,16 @@ class RestaurantsListScreen extends StatelessWidget {
                         child: ChoiceChip(
                           label: Text(c),
                           selected: state.selectedCategory == c,
+                          backgroundColor: Colors.white,
+                          side: BorderSide(
+                              color: state.selectedCategory == c
+                                  ? Theme.of(context).primaryColor
+                                  : Colors.grey.shade300),
+                          labelStyle: TextStyle(
+                            color: state.selectedCategory == c
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                           onSelected: (_) => context
                               .read<RestaurantsCubit>()
                               .updateCategoryFilter(c),
@@ -205,31 +215,82 @@ class RestaurantsListScreen extends StatelessWidget {
                       ],
                     ),
                   )
-                : ListView.builder(
+                : GridView.builder(
+                    padding: const EdgeInsets.all(12),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 0.8,
+                      crossAxisSpacing: 12,
+                      mainAxisSpacing: 12,
+                    ),
                     itemCount: filteredRestaurants.length,
                     itemBuilder: (ctx, i) {
                       final r = filteredRestaurants[i];
-                      return Card(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
-                        child: ListTile(
-                          leading: _buildRestaurantImage(r.imageUrl),
-                          title: Text(
-                            r.name,
-                            style: const TextStyle(fontWeight: FontWeight.w600),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (_) => RestaurantDetailsScreen(
+                              restaurantId: r.id,
+                              restaurantName: r.name,
+                              vendorId: r.vendorId,
+                            ),
+                          ));
+                        },
+                        child: Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(16),
                           ),
-                          subtitle: Text(r.category),
-                          trailing:
-                              const Icon(Icons.arrow_forward_ios, size: 16),
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                              builder: (_) => RestaurantDetailsScreen(
-                                restaurantId: r.id,
-                                restaurantName: r.name,
-                                vendorId: r.vendorId,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
+                            children: [
+                              // Restaurant Image
+                              Expanded(
+                                flex: 3,
+                                child: ClipRRect(
+                                  borderRadius: const BorderRadius.only(
+                                    topLeft: Radius.circular(16),
+                                    topRight: Radius.circular(16),
+                                  ),
+                                  child: _buildRestaurantImage(r.imageUrl),
+                                ),
                               ),
-                            ));
-                          },
+                              // Restaurant Name and Category
+                              Expanded(
+                                flex: 1,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        r.name,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w600,
+                                          fontSize: 14,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 2),
+                                      Text(
+                                        r.category,
+                                        maxLines: 1,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          color: Colors.grey.shade600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       );
                     },
@@ -243,13 +304,8 @@ class RestaurantsListScreen extends StatelessWidget {
   Widget _buildRestaurantImage(String? imageUrl) {
     if (imageUrl == null || imageUrl.isEmpty) {
       return Container(
-        width: 56,
-        height: 56,
-        decoration: BoxDecoration(
-          color: Colors.grey[300],
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: const Icon(Icons.restaurant, size: 32),
+        color: Colors.grey[300],
+        child: const Icon(Icons.restaurant, size: 48),
       );
     }
 
@@ -265,61 +321,37 @@ class RestaurantsListScreen extends StatelessWidget {
         }
 
         final bytes = base64Decode(base64String);
-        return Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            image: DecorationImage(
-              image: MemoryImage(bytes),
-              fit: BoxFit.cover,
-            ),
-          ),
+        return Image.memory(
+          bytes,
+          fit: BoxFit.cover,
         );
       } catch (e) {
         return Container(
-          width: 56,
-          height: 56,
-          decoration: BoxDecoration(
-            color: Colors.grey[300],
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: const Icon(Icons.broken_image, size: 32),
+          color: Colors.grey[300],
+          child: const Icon(Icons.broken_image, size: 48),
         );
       }
     }
 
     // It's a network URL
-    return Container(
-      width: 56,
-      height: 56,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(8),
-        child: Image.network(
-          imageUrl,
-          width: 56,
-          height: 56,
-          fit: BoxFit.cover,
-          loadingBuilder: (context, child, loadingProgress) {
-            if (loadingProgress == null) return child;
-            return Container(
-              color: Colors.grey[300],
-              child: const Center(
-                child: CircularProgressIndicator(strokeWidth: 2),
-              ),
-            );
-          },
-          errorBuilder: (context, error, stackTrace) {
-            return Container(
-              color: Colors.grey[300],
-              child: const Icon(Icons.broken_image, size: 32),
-            );
-          },
-        ),
-      ),
+    return Image.network(
+      imageUrl,
+      fit: BoxFit.cover,
+      loadingBuilder: (context, child, loadingProgress) {
+        if (loadingProgress == null) return child;
+        return Container(
+          color: Colors.grey[300],
+          child: const Center(
+            child: CircularProgressIndicator(strokeWidth: 2),
+          ),
+        );
+      },
+      errorBuilder: (context, error, stackTrace) {
+        return Container(
+          color: Colors.grey[300],
+          child: const Icon(Icons.broken_image, size: 48),
+        );
+      },
     );
   }
 }
