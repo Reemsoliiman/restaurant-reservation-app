@@ -1,16 +1,44 @@
-# customer_app
+# Customer App - Restaurant Reservation System
 
-A new Flutter project.
+Flutter mobile application for customers to browse restaurants and make table reservations.
+
+## Features
+
+- **Authentication**: Email/password registration and login with Firebase Auth
+- **Browse Restaurants**: Real-time list with search and category filtering
+- **Restaurant Details**: View restaurant info, tables, and available time slots
+- **Book Tables**: Select date/time and make reservations with race condition prevention
+- **My Bookings**: View booking history and cancel reservations
+- **Real-time Updates**: Instant slot availability updates across all devices
+
+## Architecture
+
+- **State Management**: Cubit pattern with flutter_bloc (5 cubits)
+- **Backend**: Firebase (Authentication, Firestore, Storage)
+- **UI Pattern**: BlocBuilder/BlocConsumer for reactive UI
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+1. Install dependencies:
+   ```bash
+   flutter pub get
+   ```
 
-A few resources to get you started if this is your first Flutter project:
+2. Run the app:
+   ```bash
+   flutter run
+   ```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Structure
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+```
+lib/
+├── cubits/              # State management (5 cubits)
+├── Models/              # Data models (restaurant, table, booking)
+├── Screens/             # UI screens (7 screens)
+├── services/            # Firestore service
+├── widgets/             # Reusable widgets
+└── main.dart            # Entry point
+```
+
+For complete project documentation, see the main [README.md](../README.md) in the root directory.

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "478595585360",
+    "project_id": "restaurant-reservation-s-8657b",
+    "storage_bucket": "restaurant-reservation-s-8657b.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478595585360:android:cb2af98064472891d3c855",
+        "android_client_info": {
+          "package_name": "com.example.customer_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv_Hu0CJnC7AkQhopk0hToKxEjVKy69Zc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:478595585360:android:f5d0ce6e9e380666d3c855",
+        "android_client_info": {
+          "package_name": "com.example.vendor_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv_Hu0CJnC7AkQhopk0hToKxEjVKy69Zc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

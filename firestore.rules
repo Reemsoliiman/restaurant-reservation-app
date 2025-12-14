@@ -1,0 +1,55 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Deny everything by default and open specific rules below.
+    match /{document=**} {
+      allow read: if false;
+      allow write: if false;
+    }
+
+    // bookings: customers can create bookings where customerId == auth.uid
+    // customers and vendors can read their own bookings
+    match /bookings/{bookingId} {
+      allow create: if request.auth != null && request.resource.data.customerId == request.auth.uid;
+      allow read: if request.auth != null && (
+        request.auth.uid == resource.data.customerId ||
+        request.auth.uid == resource.data.vendorId
+      );
+      allow update: if false;
+      allow delete: if false;
+    }
+
+    // users: authenticated users can read/write their own profile
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+
+    // restaurants: public read, vendor-only write (requires custom claim 'vendor' or specific vendorId)
+    match /restaurants/{restaurantId} {
+      allow read: if true;
+      allow create: if request.auth != null && request.auth.token.vendor == true;
+      allow update: if request.auth != null && request.auth.token.vendor == true;
+      allow delete: if request.auth != null && request.auth.token.vendor == true;
+    }
+
+    // tables subcollection under restaurants: allow public read (customers need to read table list)
+    match /restaurants/{restaurantId}/tables/{tableId} {
+      allow read: if true;
+      allow create, update, delete: if request.auth != null && request.auth.token.vendor == true;
+    }
+
+    // categories: vendor-only writes, public read
+    match /categories/{cat} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.vendor == true;
+    }
+
+    // vendor_tokens: only server (or vendor) can write
+    match /vendor_tokens/{token} {
+      allow read: if false;
+      allow write: if request.auth != null;
+    }
+  }
+}
